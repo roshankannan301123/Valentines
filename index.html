@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Flower App 💖</title>
+
+    <style>
+        body {
+            font-family: "Comic Sans MS", cursive;
+            background-color: #ffe6f2;
+            margin: 0;
+            padding: 0;
+            height: 100vh;
+        }
+
+        /* Center first screen */
+        #mainContent {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            text-align: center;
+        }
+
+        h1 {
+            color: #ff4d88;
+            font-size: 48px;
+            margin-bottom: 40px;
+        }
+
+        /* Button container for side-by-side layout */
+        #buttonContainer {
+            display: flex;
+            gap: 60px;
+        }
+
+        button {
+            padding: 15px 35px;
+            font-size: 22px;
+            border-radius: 12px;
+            border: none;
+            cursor: pointer;
+        }
+
+        #yesBtn {
+            background-color: #ff4d88;
+            color: white;
+        }
+
+        #noBtn {
+            background-color: #999;
+            color: white;
+            position: relative;
+        }
+
+        /* Hidden collage initially */
+        #photoCollage {
+            display: none;
+            margin-top: 40px;
+            text-align: center;
+        }
+
+        .collage {
+            display: grid;
+            grid-template-columns: repeat(5, 150px);
+            gap: 12px;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+
+        .collage img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 15px;
+            box-shadow: 0px 4px 8px rgba(0,0,0,0.2);
+        }
+    </style>
+</head>
+
+<body>
+
+    <div id="mainContent">
+        <h1 id="question">Will you be my Valentine? 💐💖</h1>
+
+        <div id="buttonContainer">
+            <button id="yesBtn" onclick="showPhotos()">Yes 💕</button>
+            <button id="noBtn" onmouseover="moveButton()">No 🙈</button>
+        </div>
+    </div>
+
+    <div id="photoCollage">
+        <h2>I LOVE YOU MUGDHA ❤️</h2>
+
+        <div class="collage">
+            <img src="{{ url_for('static', filename='photos/photo1.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo2.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo3.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo4.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo5.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo6.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo7.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo8.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo9.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo10.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo11.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo12.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo13.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo14.jpeg') }}">
+            <img src="{{ url_for('static', filename='photos/photo15.jpeg') }}">
+        </div>
+    </div>
+
+    <script>
+        function moveButton() {
+            let x = Math.random() * (window.innerWidth - 150);
+            let y = Math.random() * (window.innerHeight - 150);
+
+            const noBtn = document.getElementById("noBtn");
+            noBtn.style.position = "absolute";
+            noBtn.style.left = x + "px";
+            noBtn.style.top = y + "px";
+        }
+
+        function showPhotos() {
+            document.getElementById("mainContent").style.display = "none";
+            document.getElementById("photoCollage").style.display = "block";
+        }
+    </script>
+
+</body>
+</html>
